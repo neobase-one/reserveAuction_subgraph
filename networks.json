@@ -1,0 +1,8 @@
+{
+  "goerli": {
+    "ReserveAuctionCoreErc20": {
+      "address": "0xd021F9B793697894E8a9DAf312C47a2a742C2bBf",
+      "startBlock": 8801829
+    }
+  }
+}

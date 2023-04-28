@@ -1,0 +1,102 @@
+type AuctionBid @entity(immutable: true) {
+  id: Bytes!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  firstBid: Boolean! # bool
+  extended: Boolean! # bool
+  auction_seller: Bytes! # address
+  auction_sellerFundsRecipient: Bytes! # address
+  auction_reservePrice: BigInt! # uint256
+  auction_highestBid: BigInt! # uint256
+  auction_highestBidder: Bytes! # address
+  auction_duration: BigInt! # uint48
+  auction_startTime: BigInt! # uint48
+  auction_currency: Bytes! # address
+  auction_firstBidTime: BigInt! # uint96
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AuctionCanceled @entity(immutable: true) {
+  id: Bytes!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  auction_seller: Bytes! # address
+  auction_sellerFundsRecipient: Bytes! # address
+  auction_reservePrice: BigInt! # uint256
+  auction_highestBid: BigInt! # uint256
+  auction_highestBidder: Bytes! # address
+  auction_duration: BigInt! # uint48
+  auction_startTime: BigInt! # uint48
+  auction_currency: Bytes! # address
+  auction_firstBidTime: BigInt! # uint96
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AuctionCreated @entity(immutable: true) {
+  id: Bytes!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  auction_seller: Bytes! # address
+  auction_sellerFundsRecipient: Bytes! # address
+  auction_reservePrice: BigInt! # uint256
+  auction_highestBid: BigInt! # uint256
+  auction_highestBidder: Bytes! # address
+  auction_duration: BigInt! # uint48
+  auction_startTime: BigInt! # uint48
+  auction_currency: Bytes! # address
+  auction_firstBidTime: BigInt! # uint96
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AuctionEnded @entity(immutable: true) {
+  id: Bytes!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  auction_seller: Bytes! # address
+  auction_sellerFundsRecipient: Bytes! # address
+  auction_reservePrice: BigInt! # uint256
+  auction_highestBid: BigInt! # uint256
+  auction_highestBidder: Bytes! # address
+  auction_duration: BigInt! # uint48
+  auction_startTime: BigInt! # uint48
+  auction_currency: Bytes! # address
+  auction_firstBidTime: BigInt! # uint96
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AuctionReservePriceUpdated @entity(immutable: true) {
+  id: Bytes!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  auction_seller: Bytes! # address
+  auction_sellerFundsRecipient: Bytes! # address
+  auction_reservePrice: BigInt! # uint256
+  auction_highestBid: BigInt! # uint256
+  auction_highestBidder: Bytes! # address
+  auction_duration: BigInt! # uint48
+  auction_startTime: BigInt! # uint48
+  auction_currency: Bytes! # address
+  auction_firstBidTime: BigInt! # uint96
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RoyaltyPayout @entity(immutable: true) {
+  id: Bytes!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  recipient: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
