@@ -31,7 +31,7 @@ export function fetchAuctionEvent(
   ev.transactionHash = txhash;
   return ev as AuctionEvent;
 }
-export function fetionAuctionBid(
+export function fetchAuctionBid(
   firstBid: boolean,
   extendedBid: boolean,
   id: string,
