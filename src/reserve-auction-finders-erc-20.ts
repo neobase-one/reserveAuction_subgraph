@@ -1,11 +1,10 @@
-import { Address } from "@graphprotocol/graph-ts"
 import {
   AuctionBid as AuctionBidEvent,
   AuctionCanceled as AuctionCanceledEvent,
   AuctionCreated as AuctionCreatedEvent,
   AuctionEnded as AuctionEndedEvent,
-  AuctionReservePriceUpdated as AuctionReservePriceUpdatedEvent,
-} from "../generated/ReserveAuctionCoreErc20/ReserveAuctionCoreErc20"
+  AuctionReservePriceUpdated as AuctionReservePriceUpdatedEvent
+} from "../generated/ReserveAuctionFindersErc20/ReserveAuctionFindersErc20"
 import {
   AuctionBid,
   AuctionEvent,
@@ -21,7 +20,7 @@ export function handleAuctionBid(event: AuctionBidEvent): void {
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.auction_live = true
-  entity.auction_type = "CORE_ERC20"
+  entity.auction_type = "FINDER_ERC20"
   entity.auction_seller = event.params.auction.seller
   entity.auction_sellerFundsRecipient = event.params.auction.sellerFundsRecipient
   entity.auction_reservePrice = event.params.auction.reservePrice
@@ -31,9 +30,8 @@ export function handleAuctionBid(event: AuctionBidEvent): void {
   entity.auction_startTime = event.params.auction.startTime
   entity.auction_currency = event.params.auction.currency
   entity.auction_firstBidTime = event.params.auction.firstBidTime
-  entity.auction_FeeBps = 0
-  entity.auction_FeeRecipient = Address.zero()
-
+  entity.auction_FeeBps = event.params.auction.findersFeeBps
+  entity.auction_FeeRecipient = event.params.auction.finder
   entity.save()
 
   let ev = new AuctionEvent(
@@ -44,8 +42,8 @@ export function handleAuctionBid(event: AuctionBidEvent): void {
   ev.blockNumber = event.block.number
   ev.blockTimestamp = event.block.timestamp
   ev.transactionHash = event.transaction.hash
-
   ev.save()
+
   let bid_ev = new AuctionBid(
     event.block.number.toString().concat('-').concat(event.logIndex.toString())
   )
@@ -68,7 +66,7 @@ export function handleAuctionCanceled(event: AuctionCanceledEvent): void {
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.auction_live = false
-  entity.auction_type = "CORE_ERC20"
+  entity.auction_type = "FINDER_ERC20"
   entity.auction_seller = event.params.auction.seller
   entity.auction_sellerFundsRecipient = event.params.auction.sellerFundsRecipient
   entity.auction_reservePrice = event.params.auction.reservePrice
@@ -78,8 +76,8 @@ export function handleAuctionCanceled(event: AuctionCanceledEvent): void {
   entity.auction_startTime = event.params.auction.startTime
   entity.auction_currency = event.params.auction.currency
   entity.auction_firstBidTime = event.params.auction.firstBidTime
-  entity.auction_FeeBps = 0
-  entity.auction_FeeRecipient = Address.zero()
+  entity.auction_FeeBps = event.params.auction.findersFeeBps
+  entity.auction_FeeRecipient = event.params.auction.finder
   entity.save()
 
   let ev = new AuctionEvent(
@@ -103,7 +101,7 @@ export function handleAuctionCreated(event: AuctionCreatedEvent): void {
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.auction_live = true
-  entity.auction_type = "CORE_ERC20"
+  entity.auction_type = "FINDER_ERC20"
   entity.auction_seller = event.params.auction.seller
   entity.auction_sellerFundsRecipient = event.params.auction.sellerFundsRecipient
   entity.auction_reservePrice = event.params.auction.reservePrice
@@ -113,9 +111,8 @@ export function handleAuctionCreated(event: AuctionCreatedEvent): void {
   entity.auction_startTime = event.params.auction.startTime
   entity.auction_currency = event.params.auction.currency
   entity.auction_firstBidTime = event.params.auction.firstBidTime
-  entity.auction_FeeBps = 0
-  entity.auction_FeeRecipient = Address.zero()
-
+  entity.auction_FeeBps = event.params.auction.findersFeeBps
+  entity.auction_FeeRecipient = event.params.auction.finder
   entity.save()
 
   let ev = new AuctionEvent(
@@ -131,7 +128,6 @@ export function handleAuctionCreated(event: AuctionCreatedEvent): void {
 }
 
 export function handleAuctionEnded(event: AuctionEndedEvent): void {
-
   let entity = Auction.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
 
   if (entity == null) {
@@ -140,7 +136,7 @@ export function handleAuctionEnded(event: AuctionEndedEvent): void {
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.auction_live = false
-  entity.auction_type = "CORE_ERC20"
+  entity.auction_type = "FINDER_ERC20"
   entity.auction_seller = event.params.auction.seller
   entity.auction_sellerFundsRecipient = event.params.auction.sellerFundsRecipient
   entity.auction_reservePrice = event.params.auction.reservePrice
@@ -150,9 +146,8 @@ export function handleAuctionEnded(event: AuctionEndedEvent): void {
   entity.auction_startTime = event.params.auction.startTime
   entity.auction_currency = event.params.auction.currency
   entity.auction_firstBidTime = event.params.auction.firstBidTime
-  entity.auction_FeeBps = 0
-  entity.auction_FeeRecipient = Address.zero()
-
+  entity.auction_FeeBps = event.params.auction.findersFeeBps
+  entity.auction_FeeRecipient = event.params.auction.finder
   entity.save()
 
   let ev = new AuctionEvent(
@@ -163,13 +158,13 @@ export function handleAuctionEnded(event: AuctionEndedEvent): void {
   ev.blockNumber = event.block.number
   ev.blockTimestamp = event.block.timestamp
   ev.transactionHash = event.transaction.hash
-
   ev.save()
   entity.save()
 }
 
-export function handleAuctionReservePriceUpdated( event: AuctionReservePriceUpdatedEvent ): void {
-
+export function handleAuctionReservePriceUpdated(
+  event: AuctionReservePriceUpdatedEvent
+): void {
   let entity = Auction.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
 
   if (entity == null) {
@@ -178,7 +173,7 @@ export function handleAuctionReservePriceUpdated( event: AuctionReservePriceUpda
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.auction_live = true
-  entity.auction_type = "CORE_ERC20"
+  entity.auction_type = "FINDER_ERC20"
   entity.auction_seller = event.params.auction.seller
   entity.auction_sellerFundsRecipient = event.params.auction.sellerFundsRecipient
   entity.auction_reservePrice = event.params.auction.reservePrice
@@ -188,9 +183,8 @@ export function handleAuctionReservePriceUpdated( event: AuctionReservePriceUpda
   entity.auction_startTime = event.params.auction.startTime
   entity.auction_currency = event.params.auction.currency
   entity.auction_firstBidTime = event.params.auction.firstBidTime
-  entity.auction_FeeBps = 0
-  entity.auction_FeeRecipient = Address.zero()
-
+  entity.auction_FeeBps = event.params.auction.findersFeeBps
+  entity.auction_FeeRecipient = event.params.auction.finder
   entity.save()
 
   let ev = new AuctionEvent(
@@ -201,7 +195,6 @@ export function handleAuctionReservePriceUpdated( event: AuctionReservePriceUpda
   ev.blockNumber = event.block.number
   ev.blockTimestamp = event.block.timestamp
   ev.transactionHash = event.transaction.hash
-
   ev.save()
   entity.save()
 }

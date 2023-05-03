@@ -14,26 +14,202 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
+        - AuctionEvent
         - AuctionBid
-        - AuctionCanceled
-        - AuctionCreated
-        - AuctionEnded
-        - AuctionReservePriceUpdated
-        - RoyaltyPayout
       abis:
         - name: ReserveAuctionCoreErc20
           file: ./abis/ReserveAuctionCoreErc20.json
       eventHandlers:
-        - event: AuctionBid(indexed address,indexed uint256,bool,bool,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
+        - event: AuctionBid(indexed address,indexed
+            uint256,bool,bool,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
           handler: handleAuctionBid
-        - event: AuctionCanceled(indexed address,indexed uint256,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
+        - event: AuctionCanceled(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
           handler: handleAuctionCanceled
-        - event: AuctionCreated(indexed address,indexed uint256,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
+        - event: AuctionCreated(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
           handler: handleAuctionCreated
-        - event: AuctionEnded(indexed address,indexed uint256,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
+        - event: AuctionEnded(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
           handler: handleAuctionEnded
-        - event: AuctionReservePriceUpdated(indexed address,indexed uint256,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
+        - event: AuctionReservePriceUpdated(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
           handler: handleAuctionReservePriceUpdated
         - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
           handler: handleRoyaltyPayout
       file: ./src/reserve-auction-core-erc-20.ts
+  - kind: ethereum
+    name: ReserveAuctionCoreEth
+    network: goerli
+    source:
+      address: "0x061b280549aff29e3C656d177180CAc90ee7Ab0F"
+      abi: ReserveAuctionCoreEth
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AuctionEvent
+        - AuctionBid
+      abis:
+        - name: ReserveAuctionCoreEth
+          file: ./abis/ReserveAuctionCoreEth.json
+      eventHandlers:
+        - event: AuctionBid(indexed address,indexed
+            uint256,bool,bool,(address,uint96,address,uint96,address,uint32,uint32,uint32))
+          handler: handleAuctionBid
+        - event: AuctionCanceled(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint32,uint32,uint32))
+          handler: handleAuctionCanceled
+        - event: AuctionCreated(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint32,uint32,uint32))
+          handler: handleAuctionCreated
+        - event: AuctionEnded(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint32,uint32,uint32))
+          handler: handleAuctionEnded
+        - event: AuctionReservePriceUpdated(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint32,uint32,uint32))
+          handler: handleAuctionReservePriceUpdated
+        - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
+          handler: handleRoyaltyPayout
+      file: ./src/reserve-auction-core-eth.ts
+  - kind: ethereum
+    name: ReserveAuctionFindersErc20
+    network: goerli
+    source:
+      address: "0xd718f34fd9E60aCe3f6459BD9349722d7b47b702"
+      abi: ReserveAuctionFindersErc20
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AuctionEvent
+        - AuctionBid
+      abis:
+        - name: ReserveAuctionFindersErc20
+          file: ./abis/ReserveAuctionFindersErc20.json
+      eventHandlers:
+        - event: AuctionBid(indexed address,indexed
+            uint256,bool,bool,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
+          handler: handleAuctionBid
+        - event: AuctionCanceled(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
+          handler: handleAuctionCanceled
+        - event: AuctionCreated(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
+          handler: handleAuctionCreated
+        - event: AuctionEnded(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
+          handler: handleAuctionEnded
+        - event: AuctionReservePriceUpdated(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
+          handler: handleAuctionReservePriceUpdated
+        - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
+          handler: handleRoyaltyPayout
+      file: ./src/reserve-auction-finders-erc-20.ts
+  - kind: ethereum
+    name: ReserveAuctionFindersEth
+    network: goerli
+    source:
+      address: "0x1ABB5C7eD8A77094Bcc8A43760e21ade73DC9494"
+      abi: ReserveAuctionFindersEth
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AuctionEvent
+        - AuctionBid
+      abis:
+        - name: ReserveAuctionFindersEth
+          file: ./abis/ReserveAuctionFindersEth.json
+      eventHandlers:
+        - event: AuctionBid(indexed address,indexed
+            uint256,bool,bool,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
+          handler: handleAuctionBid
+        - event: AuctionCanceled(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
+          handler: handleAuctionCanceled
+        - event: AuctionCreated(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
+          handler: handleAuctionCreated
+        - event: AuctionEnded(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
+          handler: handleAuctionEnded
+        - event: AuctionReservePriceUpdated(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
+          handler: handleAuctionReservePriceUpdated
+        - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
+          handler: handleRoyaltyPayout
+      file: ./src/reserve-auction-finders-eth.ts
+  - kind: ethereum
+    name: ReserveAuctionListingErc20
+    network: goerli
+    source:
+      address: "0x40425ABaa4c11F3a3A98c56C01eEfE5c918E529d"
+      abi: ReserveAuctionListingErc20
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AuctionEvent
+        - AuctionBid
+      abis:
+        - name: ReserveAuctionListingErc20
+          file: ./abis/ReserveAuctionListingErc20.json
+      eventHandlers:
+        - event: AuctionBid(indexed address,indexed
+            uint256,bool,bool,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
+          handler: handleAuctionBid
+        - event: AuctionCanceled(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
+          handler: handleAuctionCanceled
+        - event: AuctionCreated(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
+          handler: handleAuctionCreated
+        - event: AuctionEnded(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
+          handler: handleAuctionEnded
+        - event: AuctionReservePriceUpdated(indexed address,indexed
+            uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
+          handler: handleAuctionReservePriceUpdated
+        - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
+          handler: handleRoyaltyPayout
+      file: ./src/reserve-auction-listing-erc-20.ts
+  - kind: ethereum
+    name: ReserveAuctionListingEth
+    network: goerli
+    source:
+      address: "0xeFD00250869F8193c501D3Cbb90B0E3Eb9505B64"
+      abi: ReserveAuctionListingEth
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AuctionEvent
+        - AuctionBid
+      abis:
+        - name: ReserveAuctionListingEth
+          file: ./abis/ReserveAuctionListingEth.json
+      eventHandlers:
+        - event: AuctionBid(indexed address,indexed
+            uint256,bool,bool,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
+          handler: handleAuctionBid
+        - event: AuctionCanceled(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
+          handler: handleAuctionCanceled
+        - event: AuctionCreated(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
+          handler: handleAuctionCreated
+        - event: AuctionEnded(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
+          handler: handleAuctionEnded
+        - event: AuctionReservePriceUpdated(indexed address,indexed
+            uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
+          handler: handleAuctionReservePriceUpdated
+        - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
+          handler: handleRoyaltyPayout
+      file: ./src/reserve-auction-listing-eth.ts

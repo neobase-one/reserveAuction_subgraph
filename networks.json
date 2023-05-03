@@ -3,6 +3,26 @@
     "ReserveAuctionCoreErc20": {
       "address": "0xd021F9B793697894E8a9DAf312C47a2a742C2bBf",
       "startBlock": 8801829
+    },
+    "ReserveAuctionCoreEth": {
+      "address": "0x061b280549aff29e3C656d177180CAc90ee7Ab0F",
+      "startBlock": 8801793
+    },
+    "ReserveAuctionFindersErc20": {
+      "address": "0xd718f34fd9E60aCe3f6459BD9349722d7b47b702",
+      "startBlock": 8801809
+    },
+    "ReserveAuctionFindersEth": {
+      "address": "0x1ABB5C7eD8A77094Bcc8A43760e21ade73DC9494",
+      "startBlock": 8801818
+    },
+    "ReserveAuctionListingErc20": {
+      "address": "0x40425ABaa4c11F3a3A98c56C01eEfE5c918E529d",
+      "startBlock": 8801823
+    },
+    "ReserveAuctionListingEth": {
+      "address": "0xeFD00250869F8193c501D3Cbb90B0E3Eb9505B64",
+      "startBlock": 8801829
     }
   }
 }
