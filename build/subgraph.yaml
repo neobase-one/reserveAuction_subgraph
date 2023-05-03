@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: ReserveAuctionCoreErc20
@@ -18,7 +18,7 @@ dataSources:
         - AuctionBid
       abis:
         - name: ReserveAuctionCoreErc20
-          file: ./abis/ReserveAuctionCoreErc20.json
+          file: ReserveAuctionCoreErc20\abis\ReserveAuctionCoreErc20.json
       eventHandlers:
         - event: AuctionBid(indexed address,indexed
             uint256,bool,bool,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
@@ -35,7 +35,7 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
           handler: handleAuctionReservePriceUpdated
-      file: ./src/reserve-auction-core-erc-20.ts
+      file: ReserveAuctionCoreErc20\ReserveAuctionCoreErc20.wasm
   - kind: ethereum
     name: ReserveAuctionCoreEth
     network: goerli
@@ -52,7 +52,7 @@ dataSources:
         - AuctionBid
       abis:
         - name: ReserveAuctionCoreEth
-          file: ./abis/ReserveAuctionCoreEth.json
+          file: ReserveAuctionCoreEth\abis\ReserveAuctionCoreEth.json
       eventHandlers:
         - event: AuctionBid(indexed address,indexed
             uint256,bool,bool,(address,uint96,address,uint96,address,uint32,uint32,uint32))
@@ -69,7 +69,7 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,uint96,address,uint96,address,uint32,uint32,uint32))
           handler: handleAuctionReservePriceUpdated
-      file: ./src/reserve-auction-core-eth.ts
+      file: ReserveAuctionCoreEth\ReserveAuctionCoreEth.wasm
   - kind: ethereum
     name: ReserveAuctionFindersErc20
     network: goerli
@@ -86,7 +86,7 @@ dataSources:
         - AuctionBid
       abis:
         - name: ReserveAuctionFindersErc20
-          file: ./abis/ReserveAuctionFindersErc20.json
+          file: ReserveAuctionFindersErc20\abis\ReserveAuctionFindersErc20.json
       eventHandlers:
         - event: AuctionBid(indexed address,indexed
             uint256,bool,bool,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
@@ -103,7 +103,7 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
           handler: handleAuctionReservePriceUpdated
-      file: ./src/reserve-auction-finders-erc-20.ts
+      file: ReserveAuctionFindersErc20\ReserveAuctionFindersErc20.wasm
   - kind: ethereum
     name: ReserveAuctionFindersEth
     network: goerli
@@ -120,7 +120,7 @@ dataSources:
         - AuctionBid
       abis:
         - name: ReserveAuctionFindersEth
-          file: ./abis/ReserveAuctionFindersEth.json
+          file: ReserveAuctionFindersEth\abis\ReserveAuctionFindersEth.json
       eventHandlers:
         - event: AuctionBid(indexed address,indexed
             uint256,bool,bool,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
@@ -137,7 +137,7 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
           handler: handleAuctionReservePriceUpdated
-      file: ./src/reserve-auction-finders-eth.ts
+      file: ReserveAuctionFindersEth\ReserveAuctionFindersEth.wasm
   - kind: ethereum
     name: ReserveAuctionListingErc20
     network: goerli
@@ -154,7 +154,7 @@ dataSources:
         - AuctionBid
       abis:
         - name: ReserveAuctionListingErc20
-          file: ./abis/ReserveAuctionListingErc20.json
+          file: ReserveAuctionListingErc20\abis\ReserveAuctionListingErc20.json
       eventHandlers:
         - event: AuctionBid(indexed address,indexed
             uint256,bool,bool,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
@@ -171,7 +171,7 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
           handler: handleAuctionReservePriceUpdated
-      file: ./src/reserve-auction-listing-erc-20.ts
+      file: ReserveAuctionListingErc20\ReserveAuctionListingErc20.wasm
   - kind: ethereum
     name: ReserveAuctionListingEth
     network: goerli
@@ -188,7 +188,7 @@ dataSources:
         - AuctionBid
       abis:
         - name: ReserveAuctionListingEth
-          file: ./abis/ReserveAuctionListingEth.json
+          file: ReserveAuctionListingEth\abis\ReserveAuctionListingEth.json
       eventHandlers:
         - event: AuctionBid(indexed address,indexed
             uint256,bool,bool,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
@@ -205,4 +205,4 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
           handler: handleAuctionReservePriceUpdated
-      file: ./src/reserve-auction-listing-eth.ts
+      file: ReserveAuctionListingEth\ReserveAuctionListingEth.wasm

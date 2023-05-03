@@ -1,0 +1,53 @@
+type Auction @entity(immutable: false){
+  id: ID!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  auction_live: Boolean! # bool
+  auction_type: AuctionType!
+  auction_seller: Bytes! # address
+  auction_sellerFundsRecipient: Bytes! # address
+  auction_reservePrice: BigInt! # uint256
+  auction_highestBid: BigInt! # uint256
+  auction_highestBidder: Bytes! # address
+  auction_startTime: BigInt! # uint96 
+  auction_currency: Bytes! # address
+  auction_firstBidTime: BigInt! # uint96 
+  auction_duration: BigInt! # uint80 
+  auction_FeeBps: Int! # uint16
+  auction_FeeRecipient: Bytes! # address
+  auction_events: [AuctionEvent!]! @derivedFrom(field: "auction")
+  auction_bids: [AuctionBid!]! @derivedFrom(field: "auction")
+
+}
+type AuctionEvent @entity (immutable: false) {
+  id: ID!
+  eventType: AuctionEventType
+  auction: Auction!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type AuctionBid @entity (immutable: false) {
+  id: ID!
+  first_bid: Boolean! # bool
+  extended_bid: Boolean! # bool
+  auction: Auction!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+enum AuctionEventType {
+  AUCTION_CREATED
+  AUCTION_RESERVE_PRICE_UPDATED
+  AUCTION_CANCELED
+  AUCTION_BID
+  AUCTION_ENDED
+}
+enum AuctionType{
+  CORE_ETH
+  CORE_ERC20
+  FINDER_ETH
+  FINDER_ERC20
+  LISTING_ETH
+  LISTING_ERC20
+}
