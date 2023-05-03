@@ -1,15 +1,15 @@
 import { Address, BigInt, Bytes } from "@graphprotocol/graph-ts";
 import { Auction, AuctionBid, AuctionEvent } from "../../generated/schema";
 
-export function fetchAuction(
-  live: boolean,
-  auctionType: string,
-  tokenContract: Address,
-  tokenId: BigInt,
-  auction : 
-): Auction {
+// export function fetchAuction(
+//   live: boolean,
+//   auctionType: string,
+//   tokenContract: Address,
+//   tokenId: BigInt,
+//   auction : 
+// ): Auction {
 
-}
+// }
 export function fetchAuctionEvent(
   eventType: string,
   id: string,

@@ -35,8 +35,6 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,address,uint256,uint256,address,uint48,uint48,address,uint96))
           handler: handleAuctionReservePriceUpdated
-        - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
-          handler: handleRoyaltyPayout
       file: ./src/reserve-auction-core-erc-20.ts
   - kind: ethereum
     name: ReserveAuctionCoreEth
@@ -70,8 +68,6 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,uint96,address,uint96,address,uint32,uint32,uint32))
           handler: handleAuctionReservePriceUpdated
-        - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
-          handler: handleRoyaltyPayout
       file: ./src/reserve-auction-core-eth.ts
   - kind: ethereum
     name: ReserveAuctionFindersErc20
@@ -105,8 +101,6 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
           handler: handleAuctionReservePriceUpdated
-        - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
-          handler: handleRoyaltyPayout
       file: ./src/reserve-auction-finders-erc-20.ts
   - kind: ethereum
     name: ReserveAuctionFindersEth
@@ -140,8 +134,6 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
           handler: handleAuctionReservePriceUpdated
-        - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
-          handler: handleRoyaltyPayout
       file: ./src/reserve-auction-finders-eth.ts
   - kind: ethereum
     name: ReserveAuctionListingErc20
@@ -175,8 +167,6 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,address,uint256,uint256,address,uint96,address,uint96,address,uint80,uint16))
           handler: handleAuctionReservePriceUpdated
-        - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
-          handler: handleRoyaltyPayout
       file: ./src/reserve-auction-listing-erc-20.ts
   - kind: ethereum
     name: ReserveAuctionListingEth
@@ -210,6 +200,4 @@ dataSources:
         - event: AuctionReservePriceUpdated(indexed address,indexed
             uint256,(address,uint96,address,uint96,address,uint48,uint48,address,uint80,uint16))
           handler: handleAuctionReservePriceUpdated
-        - event: RoyaltyPayout(indexed address,indexed uint256,address,uint256)
-          handler: handleRoyaltyPayout
       file: ./src/reserve-auction-listing-eth.ts

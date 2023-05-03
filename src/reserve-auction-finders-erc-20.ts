@@ -12,10 +12,10 @@ import {
 } from "../generated/schema"
 
 export function handleAuctionBid(event: AuctionBidEvent): void {
-  let entity = Auction.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
+  let entity = Auction.load("FINDER_ERC20" + "-" + event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
 
   if (entity == null) {
-    entity = new Auction(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
+    entity = new Auction("FINDER_ERC20" + "-" + event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
   }
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
@@ -58,10 +58,10 @@ export function handleAuctionBid(event: AuctionBidEvent): void {
 }
 
 export function handleAuctionCanceled(event: AuctionCanceledEvent): void {
-  let entity = Auction.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
+  let entity = Auction.load("FINDER_ERC20" + "-" + event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
 
   if (entity == null) {
-    entity = new Auction(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
+    entity = new Auction("FINDER_ERC20" + "-" + event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
   }
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
@@ -93,10 +93,10 @@ export function handleAuctionCanceled(event: AuctionCanceledEvent): void {
 }
 
 export function handleAuctionCreated(event: AuctionCreatedEvent): void {
-  let entity = Auction.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
+  let entity = Auction.load("FINDER_ERC20" + "-" + event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
 
   if (entity == null) {
-    entity = new Auction(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
+    entity = new Auction("FINDER_ERC20" + "-" + event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
   }
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
@@ -128,10 +128,10 @@ export function handleAuctionCreated(event: AuctionCreatedEvent): void {
 }
 
 export function handleAuctionEnded(event: AuctionEndedEvent): void {
-  let entity = Auction.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
+  let entity = Auction.load("FINDER_ERC20" + "-" + event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
 
   if (entity == null) {
-    entity = new Auction(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
+    entity = new Auction("FINDER_ERC20" + "-" + event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
   }
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
@@ -165,10 +165,10 @@ export function handleAuctionEnded(event: AuctionEndedEvent): void {
 export function handleAuctionReservePriceUpdated(
   event: AuctionReservePriceUpdatedEvent
 ): void {
-  let entity = Auction.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
+  let entity = Auction.load("FINDER_ERC20" + "-" + event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
 
   if (entity == null) {
-    entity = new Auction(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
+    entity = new Auction("FINDER_ERC20" + "-" + event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.auction.seller.toHex())
   }
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
